@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
+import { User } from '../../models/user.model';
 
 @Component({
   selector: 'app-user-list',
@@ -17,7 +18,7 @@ export class UserListComponent implements OnInit, AfterViewInit {
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-    this.userService.getUsers().subscribe(userData => {
+    this.userService.getUsers().subscribe((userData: User[]) => {
       // Transform data to include computed fields
       const transformedData = userData.map(user => ({
         ...user,
@@ -33,17 +34,4 @@ export class UserListComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
-}
-
-export interface UserData {
-  id: number;
-  name: string;
-  workouts: Workout[];
-  totalWorkouts?: number;
-  totalMinutes?: number;
-}
-
-export interface Workout {
-  type: string;
-  minutes: number;
 }

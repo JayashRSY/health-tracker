@@ -1,4 +1,7 @@
 <div style="display: block;">
+    <h2>
+        {{ selectedUser?.name }}'s workout progress
+    </h2>
     <p-chart type="bar"
         [data]="chartData"
         [options]="chartOptions"></p-chart>

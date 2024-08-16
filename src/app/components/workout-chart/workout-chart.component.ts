@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { ChartData, ChartOptions } from 'chart.js';
+import { User } from '../../models/user.model';
 
 @Component({
   selector: 'app-workout-chart',
@@ -7,7 +8,7 @@ import { ChartData, ChartOptions } from 'chart.js';
   styleUrls: ['./workout-chart.component.css']
 })
 export class WorkoutChartComponent implements OnInit, OnChanges {
-  @Input() selectedUser: any;  // Input for the selected user
+  @Input() selectedUser?: User;
 
   chartData: ChartData<'bar'> = {
     labels: [],
@@ -41,10 +42,7 @@ export class WorkoutChartComponent implements OnInit, OnChanges {
     }
   };
 
-  ngOnInit(): void {
-
-    console.log("🚀 ~ file: workout-chart.component.ts:11 ~ selectedUser:", this.selectedUser);
-  }
+  ngOnInit(): void { }
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['selectedUser']) {
       this.updateChart();

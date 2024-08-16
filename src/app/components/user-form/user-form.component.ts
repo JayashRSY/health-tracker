@@ -28,9 +28,9 @@ export class UserFormComponent {
   addUser(): void {
     if (this.userName && this.workouts.length) {
       const newUser: User = {
-        id: new Date().getTime(), // simple unique ID
+        id: new Date().getTime(),
         name: this.userName,
-        workouts: this.workouts.filter(w => w.type && w.minutes > 0) // Ensure valid workouts
+        workouts: this.workouts.filter(w => w.type && w.minutes > 0)
       };
       this.userService.addUser(newUser);
       this.resetForm();

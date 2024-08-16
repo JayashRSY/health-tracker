@@ -1,7 +1,6 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { ChartData, ChartOptions } from 'chart.js';
-import { Chart } from 'chart.js';
+import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
+import { User } from '../../models/user.model';
 
 @Component({
   selector: 'app-activity',
@@ -9,18 +8,18 @@ import { UserService } from '../../services/user.service';
   styleUrls: ['./activity.component.css']
 })
 export class ActivityComponent implements OnInit {
-  users: any = [];
-  selectedUser: any = null;
+  users?: User[];
+  selectedUser?: User;
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-    this.userService.getUsers().subscribe((res: any) => {
+    this.userService.getUsers().subscribe((res: User[]) => {
       this.users = res
-      console.log("🚀 ~ file: activity.component.ts:18 ~ this.users:", this.users);
+      this.selectUser(res[0])
     });
   }
 
-  selectUser(user: any): void {
+  selectUser(user: User): void {
     this.selectedUser = user;
   }
 }
