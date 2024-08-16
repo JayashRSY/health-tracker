@@ -25,3 +25,45 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+## Table of Contents
+
+- [Introduction](#introduction)
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Project Structure](#project-structure)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Components Overview](#components-overview)
+- [Services Overview](#services-overview)
+- [Charts and Graphs](#charts-and-graphs)
+- [Styling](#styling)
+- [Neumorphism Design](#neumorphism-design)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Introduction
+
+The **Workout Tracker Application** is a modern web application built with Angular and Tailwind CSS. The app allows users to track their workouts, visualize their progress through charts, and manage user data effectively. The UI embraces neumorphism and modern design principles to provide a clean and engaging user experience.
+
+## Features
+
+- **User Management:** Create, update, and delete users.
+- **Workout Tracking:** Add multiple workouts for each user, including the type and duration.
+- **Charts & Graphs:** Visualize workout data with interactive charts using PrimeNG and Chart.js.
+- **Responsive Design:** Fully responsive and optimized for all devices.
+- **Neumorphism Design:** Soft and modern UI with subtle shadows and rounded elements.
+
+## Technologies Used
+
+- **Frontend:**
+  - Angular
+  - TypeScript
+  - Tailwind CSS
+  - Angular Material
+  - PrimeNG
+  - Chart.js
+
+- **Backend:**
+  - Angular Service for localStorage (client-side storage)
+  

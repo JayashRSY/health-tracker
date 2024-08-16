@@ -2,7 +2,7 @@
     <!-- User List -->
     <div class="w-1/4 p-4 bg-gray-100 rounded-lg shadow-md">
         <h2 class="text-2xl font-bold mb-4 text-gray-800">Users</h2>
-        <ul>
+        <ul *ngIf="users && users.length > 0; else noUsers">
             <li *ngFor="let user of users"
                 (click)="selectUser(user)"
                 [class.bg-blue-500]="user === selectedUser"
@@ -12,6 +12,9 @@
                 {{ user.name }}
             </li>
         </ul>
+        <ng-template #noUsers>
+            <p class="text-gray-500">No user found, please add a user.</p>
+        </ng-template>
     </div>
     <!-- Workout Chart -->
     <div class="w-3/4 p-4 bg-white rounded-lg shadow-md">

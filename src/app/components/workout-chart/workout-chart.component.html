@@ -1,7 +1,10 @@
 <div style="display: block;">
-    <h2>
+    <h2 *ngIf="selectedUser?.name; else noData">
         {{ selectedUser?.name }}'s workout progress
     </h2>
+    <ng-template #noData>
+        <h2>No workout progress</h2>
+    </ng-template>
     <p-chart type="bar"
         [data]="chartData"
         [options]="chartOptions"></p-chart>

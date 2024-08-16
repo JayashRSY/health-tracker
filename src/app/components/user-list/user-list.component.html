@@ -1,55 +1,61 @@
 <div class="container mx-auto p-6 bg-white shadow-md rounded-lg">
-    <table mat-table
-        [dataSource]="dataSource"
-        class="min-w-full bg-white border border-gray-200 rounded-lg">
+    <ng-container *ngIf="dataSource?.data?.length ?? 0 > 0; else noData">
+        <table mat-table
+            [dataSource]="dataSource"
+            class="min-w-full bg-white border border-gray-200 rounded-lg">
 
-        <!-- Name Column -->
-        <ng-container matColumnDef="name">
-            <th mat-header-cell
-                *matHeaderCellDef
-                class="bg-blue-500 p-4 text-left border-b border-gray-200"> Name </th>
-            <td mat-cell
-                *matCellDef="let element"
-                class="p-4 border-b border-gray-200"> {{element.name}} </td>
-        </ng-container>
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+                <th mat-header-cell
+                    *matHeaderCellDef
+                    class="bg-blue-500 p-4 text-left border-b border-gray-200"> Name </th>
+                <td mat-cell
+                    *matCellDef="let element"
+                    class="p-4 border-b border-gray-200"> {{element.name}} </td>
+            </ng-container>
 
-        <!-- Workouts Column -->
-        <ng-container matColumnDef="workouts">
-            <th mat-header-cell
-                *matHeaderCellDef
-                class="bg-blue-500 p-4 text-left border-b border-gray-200"> Workouts </th>
-            <td mat-cell
-                *matCellDef="let element"
-                class="p-4 border-b border-gray-200"> {{element.workouts}} </td>
-        </ng-container>
+            <!-- Workouts Column -->
+            <ng-container matColumnDef="workouts">
+                <th mat-header-cell
+                    *matHeaderCellDef
+                    class="bg-blue-500 p-4 text-left border-b border-gray-200"> Workouts </th>
+                <td mat-cell
+                    *matCellDef="let element"
+                    class="p-4 border-b border-gray-200"> {{element.workouts}} </td>
+            </ng-container>
 
-        <!-- Total Number of Workouts Column -->
-        <ng-container matColumnDef="totalWorkouts">
-            <th mat-header-cell
-                *matHeaderCellDef
-                class="bg-blue-500 p-4 text-left border-b border-gray-200"> Total Number of Workouts </th>
-            <td mat-cell
-                *matCellDef="let element"
-                class="p-4 border-b border-gray-200"> {{element.totalWorkouts}} </td>
-        </ng-container>
+            <!-- Total Number of Workouts Column -->
+            <ng-container matColumnDef="totalWorkouts">
+                <th mat-header-cell
+                    *matHeaderCellDef
+                    class="bg-blue-500 p-4 text-left border-b border-gray-200"> Total Number of Workouts </th>
+                <td mat-cell
+                    *matCellDef="let element"
+                    class="p-4 border-b border-gray-200"> {{element.totalWorkouts}} </td>
+            </ng-container>
 
-        <!-- Total Workout Minutes Column -->
-        <ng-container matColumnDef="totalMinutes">
-            <th mat-header-cell
-                *matHeaderCellDef
-                class="bg-blue-500 p-4 text-left border-b border-gray-200"> Total Workout Minutes </th>
-            <td mat-cell
-                *matCellDef="let element"
-                class="p-4 border-b border-gray-200"> {{element.totalMinutes}} </td>
-        </ng-container>
+            <!-- Total Workout Minutes Column -->
+            <ng-container matColumnDef="totalMinutes">
+                <th mat-header-cell
+                    *matHeaderCellDef
+                    class="bg-blue-500 p-4 text-left border-b border-gray-200"> Total Workout Minutes </th>
+                <td mat-cell
+                    *matCellDef="let element"
+                    class="p-4 border-b border-gray-200"> {{element.totalMinutes}} </td>
+            </ng-container>
 
-        <!-- Header and Row Declarations -->
-        <tr mat-header-row
-            *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row
-            *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
-    <mat-paginator [pageSizeOptions]="[5, 10, 20]"
-        showFirstLastButtons
-        class="paginator mt-5"></mat-paginator>
+            <!-- Header and Row Declarations -->
+            <tr mat-header-row
+                *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row
+                *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+            showFirstLastButtons
+            class="paginator mt-5"></mat-paginator>
+    </ng-container>
+
+    <ng-template #noData>
+        <p class="text-center text-gray-500 mt-5">No data available. Please add users or workouts.</p>
+    </ng-template>
 </div>
