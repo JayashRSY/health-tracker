@@ -1,0 +1,76 @@
+<div class="container mx-auto p-4">
+    <h2 class="text-2xl font-bold mb-4">Create User Workout</h2>
+
+    <form (ngSubmit)="addUser()"
+        #userForm="ngForm"
+        class="space-y-4">
+        <!-- User Name Input -->
+        <div>
+            <mat-form-field appearance="fill"
+                class="w-full">
+                <mat-label>User Name</mat-label>
+                <input matInput
+                    type="text"
+                    id="name"
+                    name="name"
+                    [(ngModel)]="userName"
+                    required />
+            </mat-form-field>
+        </div>
+
+        <!-- Workouts Input -->
+        <div *ngFor="let workout of workouts; let i = index">
+            <mat-form-field appearance="fill"
+                class="w-full">
+                <mat-label>Workout Type</mat-label>
+                <mat-select [(ngModel)]="workouts[i].type"
+                    name="workoutType{{i}}"
+                    required>
+                    <mat-option value=""
+                        disabled>Select a workout</mat-option>
+                    <mat-option value="Running">Running</mat-option>
+                    <mat-option value="Cycling">Cycling</mat-option>
+                    <mat-option value="Swimming">Swimming</mat-option>
+                    <mat-option value="Yoga">Yoga</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill"
+                class="w-full">
+                <mat-label>Workout Minutes</mat-label>
+                <input matInput
+                    type="number"
+                    [(ngModel)]="workouts[i].minutes"
+                    name="workoutMinutes{{i}}"
+                    required
+                    min="1" />
+            </mat-form-field>
+
+            <button mat-icon-button
+                type="button"
+                (click)="removeWorkout(i)">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </div>
+
+        <!-- Add Workout Button -->
+        <div>
+            <button mat-raised-button
+                color="primary"
+                type="button"
+                (click)="addWorkout()">
+                Add Another Workout
+            </button>
+        </div>
+
+        <!-- Submit Button -->
+        <div>
+            <button mat-raised-button
+                color="primary"
+                type="submit"
+                [disabled]="userForm.invalid">
+                Create User
+            </button>
+        </div>
+    </form>
+</div>
