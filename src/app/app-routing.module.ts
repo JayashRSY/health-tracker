@@ -7,7 +7,7 @@ import { ActivityComponent } from './components/activity/activity.component';
 const routes: Routes = [
   { path: 'add-user', component: UserFormComponent },
   { path: 'user-list', component: UserListComponent },
-  { path: 'activity', component: ActivityComponent },
+  { path: 'workout', component: ActivityComponent },
   { path: '', redirectTo: '/user-list', pathMatch: 'full' },
   { path: '**', redirectTo: '/user-list', pathMatch: 'full' }
 ];
