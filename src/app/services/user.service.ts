@@ -14,16 +14,17 @@ export class UserService {
   }
 
   private initDefaultData(): void {
-    // const defaultUsers: User[] = [
-    //   { id: 1, name: 'John Doe', workouts: [{ type: 'Running', minutes: 30 }, { type: 'Cycling', minutes: 45 }] },
-    //   { id: 2, name: 'Jane Smith', workouts: [{ type: 'Swimming', minutes: 60 }, { type: 'Running', minutes: 20 }] },
-    //   { id: 3, name: 'Mike Johnson', workouts: [{ type: 'Yoga', minutes: 50 }, { type: 'Cycling', minutes: 40 }] }
-    // ];
+    const defaultUsers: User[] = [
+      { id: 1, name: 'John Doe', workouts: [{ type: 'Running', minutes: 30 }, { type: 'Cycling', minutes: 45 }] },
+      { id: 2, name: 'Jane Smith', workouts: [{ type: 'Swimming', minutes: 60 }, { type: 'Running', minutes: 20 }] },
+      { id: 3, name: 'Mike Johnson', workouts: [{ type: 'Yoga', minutes: 50 }, { type: 'Cycling', minutes: 40 }] }
+    ];
 
-    // // this.saveUsers(defaultUsers);
-    // defaultUsers.forEach((user: User) => {
-    //   this.addUser(user)
-    // })
+    if (JSON.parse(localStorage.getItem(this.storageKey) || '[]').length > 0) {
+      console.log('User found in storage')
+    } else {
+      this.saveUsers(defaultUsers);
+    }
   }
 
   getUsers(): Observable<User[]> {
